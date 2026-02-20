@@ -5,12 +5,13 @@
   import Bar from "$lib/Bar.svelte";
   import BumpChart from "$lib/BumpChart.svelte";
   import Heatmap from "$lib/Heatmap.svelte";
+  import { base } from "$app/paths";
 
   let movies: TMovie[] = [];
 
   async function loadCsv() {
     try {
-      const csvUrl = "./summer_movies.csv";
+      const csvUrl = `${base}/summer_movies.csv`;
       movies = await d3.csv(csvUrl, (row) => {
         return {
           ...row,
