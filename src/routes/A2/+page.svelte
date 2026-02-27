@@ -3,6 +3,7 @@
     import { Scatter, Line } from "$lib";
     import { onMount } from "svelte";
     import type { TMovie } from "../../types";
+    import { base } from "$app/paths";
 
     // Reactive variable for storing the data
     let movies: TMovie[] = $state([]);
@@ -49,7 +50,7 @@
     // Function to load the CSV
     async function loadCsv() {
         try {
-            const csvUrl = "./summer_movies.csv";
+            const csvUrl = `${base}/summer_movies.csv`;
             movies = await d3.csv(csvUrl, (row) => {
                 // all values are strings, so use row conversion function to format them
                 return {
